@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Header } from "@/frontend/components/ui/header/Header";
 import { Footer } from "@/frontend/components/ui/footer/Footer";
 
 
@@ -16,7 +15,6 @@ export default function RootLayout({
   return (
     <html lang="en">
      <body>
-        <Header />
         <main >
           {children}
         </main>
