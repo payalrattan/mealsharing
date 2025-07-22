@@ -1,5 +1,5 @@
 import { axiosService } from "@/data/api/httpCommon";
-import { ReservationVM } from "@/modals/reservation/ReservationVM";
+import { ReservationVM } from "@/models/reservation/ReservationVM";
 
 //service to get all reservation
 export const getReservation = async () => {
@@ -8,7 +8,7 @@ export const getReservation = async () => {
   return result.data.data;
 };
 //service to get reservation by id
-export const getReservationById = async (id: string) => {
+export const getReservationById = async (id: string | number) => {
   const path = `reservations/${id}`;
 
   const result = await axiosService.get(path);

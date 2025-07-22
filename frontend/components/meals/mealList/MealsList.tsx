@@ -3,7 +3,7 @@ import styles from "@/frontend/components/meals/mealList/mealList.module.css";
 import { useEffect, useState } from "react";
 import { getMeals } from "@/services/meal-services/mealServices";
 import { Image } from "@/frontend/components/imageComponenet/Image";
-import { MealVM } from "@/modals/meals/MealVM";
+import { MealVM } from "@/models/meals/MealVM";
 import Link from "next/link";
 
 export const MealsList = () => {

@@ -6,7 +6,4 @@ export interface MealVM{
     CreatedDate: string;
     MaxReservations: number;
     Location: string;
-}
-export type Props = {
-  MealId: number
-};
+} 

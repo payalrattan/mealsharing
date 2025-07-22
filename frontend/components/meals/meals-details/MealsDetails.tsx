@@ -2,7 +2,7 @@
 import styles from "./MealDetail.module.css";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { MealVM } from "@/modals/meals/MealVM";
+import { MealVM } from "@/models/meals/MealVM";
 import { getMealById } from "@/services/meal-services/mealServices";
 import { ReservationForm } from "@/frontend/components/reservations/reservationForm/ReservationForm";
 import { ReviewForm } from "../../reviews/reviewForm/ReviewForm";
@@ -13,26 +13,23 @@ export const MealDetail = () => {
   const [meal, setMeal] = useState<MealVM | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
-  const [showReservationForm, setShowReservationForm] = useState<boolean>(false);
+  const [showReservationForm, setShowReservationForm] =
+    useState<boolean>(false);
   const [showReviewForm, setShowReviewForm] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
   const params = useParams();
-  console.log(params);
-  
   const slug = params.slug as string;
-  console.log(slug);
-  
-  const MealId = slug.split("-").pop();
+  const mealId = Number(slug);
 
   useEffect(() => {
-    if (!MealId) return;
+    if (!mealId) return;
     getData();
   }, []);
 
   const getData = async () => {
     try {
-      const response = await getMealById(MealId!);
+      const response = await getMealById(mealId!);
       setMeal(response);
     } catch (e) {
       setIsError(true);
@@ -49,7 +46,7 @@ export const MealDetail = () => {
 
       {meal && (
         <div className={styles.mealBox}>
-           <Image className={styles.image} src="/food.jpg" alt="Meal image"  />
+          <Image className={styles.image} src="/food.jpg" alt="Meal image" />
           <p>
             <b>Name of the Meal:</b> {meal.Title}
           </p>
@@ -79,8 +76,8 @@ export const MealDetail = () => {
             />
           </div>
 
-          {showReservationForm && <ReservationForm MealId={meal.MealId} />}
-          {showReviewForm && <ReviewForm MealId={meal.MealId} />}
+          {showReservationForm && <ReservationForm mealId={meal.MealId} />}
+          {showReviewForm && <ReviewForm mealId={meal.MealId} />}
         </div>
       )}
     </div>

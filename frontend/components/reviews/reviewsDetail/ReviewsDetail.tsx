@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ReviewsVM } from "@/modals/reviews/ReviewsVM";
+import { ReviewsVM } from "@/models/reviews/ReviewsVM";
 import { getReviewsById } from "@/services/review-services/reviewServices";
 
 export const ReviewsDetail = () => {
@@ -13,11 +13,9 @@ export const ReviewsDetail = () => {
 
   const params = useParams();
   const slug = params.slug as string;
-  const reviewId = slug.split("-").pop();
+  const reviewId = Number(slug);
 
   useEffect(() => {
-    console.log("Slug:", slug);
-    console.log("Review ID extracted:", reviewId);
     if (!reviewId) return;
     getData();
   }, []);

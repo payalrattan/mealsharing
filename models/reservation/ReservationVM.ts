@@ -8,6 +8,3 @@ export interface ReservationVM {
   MealId: number;
 }
  
-export type Props = {
-  mealId: number
-};

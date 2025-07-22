@@ -9,7 +9,7 @@ export const getMeals = async () => {
   return result.data.data;
 };
 //service to get meal by id
-export const getMealById = async (id: string) => {
+export const getMealById = async (id: string|number) => {
   const path = `meals/by-id/${id}`;
   const result = await axiosService.get(path);
   return result.data.data;

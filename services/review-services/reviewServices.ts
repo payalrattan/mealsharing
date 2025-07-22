@@ -1,5 +1,5 @@
 import { axiosService } from "@/data/api/httpCommon";
-import { ReviewsVM } from "@/modals/reviews/ReviewsVM";
+import { ReviewsVM } from "@/models/reviews/ReviewsVM";
 //getting all reviews
 export const getReviews = async () => {
   const result = await axiosService.get("reviews");
@@ -21,7 +21,7 @@ export const getReviewsById = async (id: string | number) => {
 //creating review
 export const postReview = async (body: ReviewsVM) => {
   try {
-    const result = await axiosService.post("reviews", body); 
+    const result = await axiosService.post("reviews", body);
     console.log("Review created:", result.data.review);
     return result.data.review;
   } catch (error) {

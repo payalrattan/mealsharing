@@ -2,9 +2,12 @@
 import styles from "@/frontend/components/reviews/reviewForm/reviewForm.module.css";
 import { useState } from "react";
 import { postReview } from "@/services/review-services/reviewServices";
-import { Props } from "@/modals/meals/MealVM";
 
-export const ReviewForm = ({ MealId }: Props) => {
+
+type Props = {
+  mealId: number
+};
+export const ReviewForm = ({ mealId }: Props) => {
   const [form, setForm] = useState({
     Title: "",
     Description: "",
@@ -18,7 +21,7 @@ export const ReviewForm = ({ MealId }: Props) => {
         description: formData.get("description") as string,
         stars: Number(formData.get("stars")),
         createdDate: new Date().toISOString(),
-        MealId,
+        mealId,
       };
 
       await postReview(formInput);

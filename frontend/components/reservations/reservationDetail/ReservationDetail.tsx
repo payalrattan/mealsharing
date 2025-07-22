@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ReservationVM } from "@/modals/reservation/ReservationVM";
+import { ReservationVM } from "@/models/reservation/ReservationVM";
 import { getReservationById } from "@/services/reservation-services/reservationServices";
 
 export const ReservationDetail = () => {
@@ -13,7 +13,7 @@ export const ReservationDetail = () => {
 
   const params = useParams();
   const slug = params.slug as string;
-  const reservationId = slug.split("-").pop();
+  const reservationId = Number(slug);
 
   useEffect(() => {
     if (!reservationId) return;

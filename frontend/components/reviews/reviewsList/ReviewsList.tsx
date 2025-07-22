@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { getReviews } from "@/services/review-services/reviewServices";
-import { ReviewsVM } from "@/modals/reviews/ReviewsVM";
+import { ReviewsVM } from "@/models/reviews/ReviewsVM";
 import Link from "next/link";
 
 export const ReviewsList = () => {

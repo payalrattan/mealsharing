@@ -2,8 +2,11 @@
 import styles from "@/frontend/components/reservations/reservationForm/reservationForm.module.css";
 import { useState } from "react";
 import { postReservation } from "@/services/reservation-services/reservationServices";
-import { Props } from "@/modals/meals/MealVM";
 
+
+type Props = {
+  mealId: number
+};
 export const ReservationForm = ({ mealId }: Props) => {
   const [form, setForm] = useState({
     ContactName: "",
@@ -11,6 +14,7 @@ export const ReservationForm = ({ mealId }: Props) => {
     EmailId: "",
     NumberOfGuests: 1,
   });
+
 
   const handleSubmit = async (formData: FormData) => {
     try {
