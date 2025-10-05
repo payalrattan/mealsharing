@@ -19,12 +19,13 @@ export const ReservationForm = ({ mealId }: Props) => {
   const handleSubmit = async (formData: FormData) => {
     try {
       const formInput = {
-        contactName: formData.get("contactName") as string,
-        contactPhoneNumber: formData.get("contactPhoneNumber") as string,
+        Id: 0, // or undefined/null if your backend assigns it
+        ContactName: formData.get("contactName") as string,
+        ContactPhoneNumber: formData.get("contactPhoneNumber") as string,
         EmailId: formData.get("EmailId") as string,
-        numberOfGuests: Number(formData.get("numberOfGuests")),
-        createdDate: new Date().toISOString(),
-        mealId, 
+        NumberOfGuests: Number(formData.get("numberOfGuests")),
+        CreatedDate: new Date().toISOString(),
+        MealId: mealId,
       };
 
       await postReservation(formInput);
