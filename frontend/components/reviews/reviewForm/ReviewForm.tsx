@@ -17,11 +17,12 @@ export const ReviewForm = ({ mealId }: Props) => {
   const handleSubmit = async (formData: FormData) => {
     try {
       const formInput = {
-        title: formData.get("title") as string,
-        description: formData.get("description") as string,
-        stars: Number(formData.get("stars")),
-        createdDate: new Date().toISOString(),
-        mealId,
+        Id: 0, // or undefined if your API assigns it
+        Title: formData.get("title") as string,
+        Description: formData.get("description") as string,
+        Stars: Number(formData.get("stars")),
+        CreatedDate: new Date().toISOString(),
+        MealId: mealId,
       };
 
       await postReview(formInput);
