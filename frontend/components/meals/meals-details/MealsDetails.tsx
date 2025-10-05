@@ -8,6 +8,7 @@ import { ReservationForm } from "@/frontend/components/reservations/reservationF
 import { ReviewForm } from "../../reviews/reviewForm/ReviewForm";
 import { Button } from "@/frontend/components/button/Button";
 import { Image } from "../../imageComponenet/Image";
+import { deleteMealById } from "@/services/meal-services/mealServices";
 
 export const MealDetail = () => {
   const [meal, setMeal] = useState<MealVM | null>(null);
@@ -38,6 +39,19 @@ export const MealDetail = () => {
       setIsLoading(false);
     }
   };
+    const deleteMealHandler = async (id: number) => {
+      const confirmDelete = confirm("Are you sure you want to delete this meal?");
+      if (!confirmDelete) return;
+  
+      try {
+        await deleteMealById(id);
+        alert("Meal deleted successfully");
+        getData(); // Refresh the list after deletion
+      } catch (error) {
+        console.error("Delete failed", error);
+        alert("Error deleting meal");
+      }
+    };
 
   return (
     <div className={styles.container}>
@@ -75,6 +89,12 @@ export const MealDetail = () => {
               appearance={styles.button}
             />
           </div>
+          <Button 
+          action={()=>deleteMealHandler(meal.MealId)}
+          text = "Delete" 
+          appearance={styles.button}/>
+          
+          
 
           {showReservationForm && <ReservationForm mealId={meal.MealId} />}
           {showReviewForm && <ReviewForm mealId={meal.MealId} />}

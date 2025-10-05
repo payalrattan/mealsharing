@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getMeals } from "@/services/meal-services/mealServices";
 import { Image } from "@/frontend/components/imageComponenet/Image";
 import { MealVM } from "@/models/meals/MealVM";
+// import { DeleteMeal } from "../delete-meal/DeleteMeal";
 import Link from "next/link";
 
 export const MealsList = () => {
@@ -25,6 +26,7 @@ export const MealsList = () => {
           <Image className={styles.image} src="./food.jpg" alt="Meal image" />
           <h2>{meal.Title}</h2>
           <Link href={`/meals/${meal.MealId}`}>View details</Link>
+          {/* <DeleteMeal /> */}
         </div>
       ))}
     </div>
